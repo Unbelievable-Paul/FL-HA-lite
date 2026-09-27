@@ -1,0 +1,22 @@
+# Home Assistant runtime state and secrets
+homeassistant/config/.storage/
+homeassistant/config/secrets.yaml
+homeassistant/config/home-assistant_v2.db*
+homeassistant/config/*.log
+homeassistant/config/deps/
+homeassistant/config/tts/
+homeassistant/config/.cloud/
+homeassistant/config/.cache/
+homeassistant/config/.HA_VERSION
+homeassistant/config/.ha_run.lock
+
+# Local backups may contain credentials or tokens
+backups/
+*.tar.gz
+*.zip
+
+# macOS / editor files
+.DS_Store
+.idea/
+.vscode/
+

@@ -1,0 +1,41 @@
+- id: bathroom_dehumidifier_auto_mode
+  alias: Bathroom Dehumidifier Auto Mode
+  description: Use the Frigidaire humidity sensor to control the bathroom dehumidifier.
+  triggers:
+    - trigger: numeric_state
+      entity_id:
+        - sensor.bathroom_dehumid_humidity
+      above: 55
+      for:
+        minutes: 2
+    - trigger: numeric_state
+      entity_id:
+        - sensor.bathroom_dehumid_humidity
+      below: 45
+      for:
+        minutes: 2
+  actions:
+    - choose:
+        - conditions:
+            - condition: numeric_state
+              entity_id: sensor.bathroom_dehumid_humidity
+              above: 55
+          sequence:
+            - action: humidifier.turn_on
+              target:
+                entity_id: humidifier.bathroom_dehumid
+            - action: humidifier.set_humidity
+              target:
+                entity_id: humidifier.bathroom_dehumid
+              data:
+                humidity: 35
+        - conditions:
+            - condition: numeric_state
+              entity_id: sensor.bathroom_dehumid_humidity
+              below: 45
+          sequence:
+            - action: humidifier.turn_off
+              target:
+                entity_id: humidifier.bathroom_dehumid
+  mode: single
+

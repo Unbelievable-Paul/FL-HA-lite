@@ -1,0 +1,28 @@
+services:
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    container_name: homeassistant
+    restart: unless-stopped
+    stop_grace_period: 60s
+
+    ports:
+      - "8123:8123"
+
+    environment:
+      TZ: America/New_York
+
+    volumes:
+      - ./config:/config
+
+    cpus: "1.50"
+    mem_limit: "1536m"
+    mem_reservation: "512m"
+    memswap_limit: "1536m"
+
+    logging:
+      driver: local
+      options:
+        max-size: "10m"
+        max-file: "3"
+        compress: "true"
+
