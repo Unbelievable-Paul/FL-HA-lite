@@ -1,6 +1,6 @@
 # Florida HA Lite
 
-Lightweight Home Assistant Container setup for a MacBook-hosted Florida room
+Lightweight Home Assistant Container setup for a MacBook-hosted room
 automation.
 
 The current focus is a Frigidaire bathroom dehumidifier. Home Assistant watches
